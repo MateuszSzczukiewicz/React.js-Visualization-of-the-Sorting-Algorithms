@@ -11,6 +11,7 @@ export const GraphSizeSelection = () => {
 			<StyledInput
 				type="number"
 				min="2"
+				max="50"
 				id="graphSize"
 				name="size"
 				value={value}
