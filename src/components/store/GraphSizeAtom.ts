@@ -1,3 +1,8 @@
-import { atom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
+import { getInitialGraphSize } from "../../utils/getInitialGraphSize.ts";
+import { LocalStorageKeyEnum } from "../../types/localStorageKey.enum.ts";
 
-export const graphSizeAtom = atom<number>(20);
+export const graphSizeAtom = atomWithStorage<number>(
+	LocalStorageKeyEnum.graphSize,
+	getInitialGraphSize(),
+);

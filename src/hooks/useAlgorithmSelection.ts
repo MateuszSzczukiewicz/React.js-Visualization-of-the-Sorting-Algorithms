@@ -1,17 +1,14 @@
-import { useLocalStorage } from "./useLocalStorage.ts";
+import { useAtom } from "jotai/index";
+import { algorithmMethodAtom } from "../components/store/AlgorithmMethodAtom.ts";
 import { ChangeEvent } from "react";
-import { LocalStorageKeyEnum } from "../types/localStorageKey.enum.ts";
-import { SelectedAlgorithmEnum } from "../types/selectedAlgorithm.enum.ts";
 
 export const useAlgorithmSelection = () => {
-	const key = LocalStorageKeyEnum.selectedAlgorithm;
-	const defaultAlgorithm: string = SelectedAlgorithmEnum.quickSort;
-
-	const { value, saveToLocalStorage } = useLocalStorage(key, defaultAlgorithm);
+	const [value, setValue] = useAtom(algorithmMethodAtom);
 
 	const handleAlgorithmChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const algorithmValue = e.target.id;
-		saveToLocalStorage(algorithmValue);
+		setValue(algorithmValue);
 	};
-	return { value, handleAlgorithmChange };
+
+	return { handleAlgorithmChange, value };
 };

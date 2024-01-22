@@ -4,7 +4,7 @@ import { graphSizeAtom } from "../components/store/GraphSizeAtom";
 import { dataArrayAtom } from "../components/store/DataArrayAtom";
 import { useEffect } from "react";
 
-export const useGenerateButton = () => {
+export const useGenerateGraph = () => {
 	const [, setData] = useAtom(dataArrayAtom);
 	const [value] = useAtom(graphSizeAtom);
 

@@ -1,8 +1,8 @@
 import { StyledButton } from "../Buttons/Buttons.styles.ts";
-import { useGenerateButton } from "../../hooks/useGenerateGraph.ts";
+import { useGenerateGraph } from "../../hooks/useGenerateGraph.ts";
 
 export const GenerateButton = () => {
-	const { handleGenerate } = useGenerateButton();
+	const { handleGenerate } = useGenerateGraph();
 
 	return <StyledButton onClick={handleGenerate}>Generate New Array</StyledButton>;
 };
