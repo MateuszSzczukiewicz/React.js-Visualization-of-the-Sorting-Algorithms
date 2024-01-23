@@ -1,35 +1,16 @@
-import { useRef, forwardRef, useState } from "react";
-import { useAtom } from "jotai";
-import { dataArrayAtom } from "../store/DataArrayAtom.ts";
+import { forwardRef } from "react";
+import { useGraphSorting } from "../../hooks/useGraphSorting";
 import { ButtonsWrapper, StyledBar, StyledButton, StyledGraph } from "./Graph.styles.ts";
-import { mergeSort } from "../../utils/mergeSort.ts";
 import { useGenerateGraph } from "../../hooks/useGenerateGraph.ts";
-import { algorithmMethodAtom } from "../store/AlgorithmMethodAtom.ts";
-import { SelectedAlgorithmEnum } from "../../types/selectedAlgorithm.enum.ts";
 
 export const Graph = forwardRef(() => {
-	const [data] = useAtom(dataArrayAtom);
-	const [method] = useAtom(algorithmMethodAtom);
-	const sortedArray = [...data];
-	const graphRef = useRef<HTMLDivElement>(null);
-	const [isSorting, setIsSorting] = useState(false);
-
+	const { sortedArray, graphRef, isSorting, handleSort } = useGraphSorting();
 	const { handleGenerate } = useGenerateGraph();
-
-	const handleSort = async () => {
-		setIsSorting(true);
-
-		if (method === SelectedAlgorithmEnum.mergeSort) {
-			await mergeSort(sortedArray, 0, sortedArray.length - 1, [], graphRef);
-		}
-
-		setIsSorting(false);
-	};
 
 	return (
 		<>
 			<StyledGraph ref={graphRef}>
-				{data.map((value, index) => (
+				{sortedArray.map((value, index) => (
 					<StyledBar
 						key={index}
 						className="bar"
