@@ -23,11 +23,11 @@ export const StyledNav = styled.nav<{ isOpen: boolean }>`
 	top: 0;
 	animation: 0.3s ease-in-out 1 forwards ${AppearAnimation};
 
-	@media (min-width: 720px) {
+	@media (min-width: 768px) {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 300px;
+		width: 400px;
 		border-right: 3px solid black;
 		animation: none;
 		transition: transform 0.3s ease-in-out;
@@ -52,8 +52,10 @@ export const StyledToggleButton = styled.button<{ isOpen: boolean }>`
 
 	@media (min-width: 720px) {
 		left: 0;
+		width: 60px;
+		height: 60px;
 		border-left: none;
 		transition: transform 0.3s ease-in-out;
-		transform: translateX(${({ isOpen }) => (isOpen ? "300px" : "0")});
+		transform: translateX(${({ isOpen }) => (isOpen ? "400px" : "0")});
 	}
 `;

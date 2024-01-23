@@ -10,9 +10,13 @@ export const InputsWrapper = styled.aside`
 
 export const StyledInputTitle = styled.h2`
 	font-family: Lato, sans-serif;
-	font-size: 18px;
+	font-size: 1rem;
 	font-weight: bold;
 	text-align: center;
+
+	@media (min-width: 768px) {
+		font-size: 1.5rem;
+	}
 `;
 
 export const StyledInputs = styled.article`
@@ -24,6 +28,7 @@ export const StyledInputs = styled.article`
 	width: 10rem;
 	border: 2px solid black;
 	font-family: Lato, sans-serif;
+	font-size: 1rem;
 
 	input[type="radio"] {
 		display: none;
@@ -38,5 +43,10 @@ export const StyledInputs = styled.article`
 
 	input[type="radio"]:checked + label {
 		font-weight: bold;
+	}
+
+	@media (min-width: 768px) {
+		font-size: 1.3rem;
+		height: 6rem;
 	}
 `;

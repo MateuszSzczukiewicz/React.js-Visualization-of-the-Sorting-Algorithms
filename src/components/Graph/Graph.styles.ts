@@ -1,5 +1,20 @@
 import styled from "styled-components";
 
+export const StyledHeader = styled.header`
+	font-family: Lato, sans-serif;
+	font-size: 1rem;
+	width: 200px;
+
+	@media (min-width: 768px) {
+		font-size: 2rem;
+		width: auto;
+	}
+`;
+
+export const VariableSpan = styled.span`
+	font-weight: bold;
+`;
+
 export const StyledGraph = styled.article`
 	display: flex;
 	align-items: end;
@@ -27,7 +42,7 @@ export const StyledButton = styled.button<{ isSorting: boolean }>`
 	font-family: Lato, sans-serif;
 	display: inline-block;
 	padding: 10px 20px;
-	font-size: 16px;
+	font-size: 1rem;
 	font-weight: bold;
 	text-align: center;
 	text-decoration: none;
@@ -40,6 +55,10 @@ export const StyledButton = styled.button<{ isSorting: boolean }>`
 		background-color 0.3s,
 		color 0.3s,
 		border-color 0.3s;
+
+	@media (min-width: 768px) {
+		font-size: 1.5rem;
+	}
 
 	&:hover {
 		color: white;

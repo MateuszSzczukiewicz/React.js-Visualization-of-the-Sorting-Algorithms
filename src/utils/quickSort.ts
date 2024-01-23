@@ -50,7 +50,7 @@ const animateBars = async (
 
 			case AnimationStepEnum.pivot:
 				gsap.to(bars[index], {
-					backgroundColor: "yellow",
+					backgroundColor: "green",
 					duration: 0.2,
 					onComplete: () => {
 						requestAnimationFrame(() => {
