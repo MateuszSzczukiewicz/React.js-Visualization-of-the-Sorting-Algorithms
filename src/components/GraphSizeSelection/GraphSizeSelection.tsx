@@ -10,6 +10,7 @@ export const GraphSizeSelection = () => {
 			<StyledInputTitle>Select Your Graph Size</StyledInputTitle>
 			<StyledInput
 				type="number"
+				aria-label="Graph Size"
 				min="2"
 				max="50"
 				id="graphSize"

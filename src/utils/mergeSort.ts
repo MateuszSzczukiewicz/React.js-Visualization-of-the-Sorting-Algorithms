@@ -1,6 +1,6 @@
+import type { AnimationStepType } from "../types/animationStep.type.ts";
 import gsap from "gsap";
 import { RefObject } from "react";
-import { AnimationStepType } from "../types/animationStep.type.ts";
 
 const animateBars = async (
 	graphRef: RefObject<HTMLDivElement>,
@@ -20,9 +20,11 @@ const animateBars = async (
 			height: `${newHeight! * 3}px`,
 			duration: 0.2,
 			onComplete: () => {
-				gsap.to(bars[index], {
-					backgroundColor: "blue",
-					duration: 0.2,
+				requestAnimationFrame(() => {
+					gsap.to(bars[index], {
+						backgroundColor: "blue",
+						duration: 0.2,
+					});
 				});
 			},
 		});

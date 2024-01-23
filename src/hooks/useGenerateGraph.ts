@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { generateRandomArray } from "../utils/generateRandomArray";
-import { graphSizeAtom } from "../components/store/GraphSizeAtom";
-import { dataArrayAtom } from "../components/store/DataArrayAtom";
+import { graphSizeAtom } from "../store/GraphSizeAtom";
+import { dataArrayAtom } from "../store/DataArrayAtom";
 import { useEffect } from "react";
 
 export const useGenerateGraph = () => {

@@ -1,5 +1,5 @@
 import { useAtom } from "jotai/index";
-import { graphSizeAtom } from "../components/store/GraphSizeAtom.ts";
+import { graphSizeAtom } from "../store/GraphSizeAtom.ts";
 import { ChangeEvent } from "react";
 
 export const useGraphSizeSelection = () => {

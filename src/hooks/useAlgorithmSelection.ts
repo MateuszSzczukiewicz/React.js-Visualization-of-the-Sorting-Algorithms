@@ -1,5 +1,5 @@
 import { useAtom } from "jotai/index";
-import { algorithmMethodAtom } from "../components/store/AlgorithmMethodAtom.ts";
+import { algorithmMethodAtom } from "../store/AlgorithmMethodAtom.ts";
 import { ChangeEvent } from "react";
 
 export const useAlgorithmSelection = () => {

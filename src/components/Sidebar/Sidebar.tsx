@@ -1,4 +1,4 @@
-import { SettingsIcon } from "../../assets/icons/SettingsIcon.tsx";
+import { SettingsIcon } from "../../assets/SettingsIcon.tsx";
 import { StyledNav, StyledToggleButton } from "./Sidebar.styles.ts";
 import { AlgorithmSelection } from "../AlgorithmSelection/AlgorithmSelection.tsx";
 import { GraphSizeSelection } from "../GraphSizeSelection/GraphSizeSelection.tsx";
