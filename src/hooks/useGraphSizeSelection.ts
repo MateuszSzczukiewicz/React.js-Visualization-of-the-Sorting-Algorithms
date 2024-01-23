@@ -5,7 +5,7 @@ import { ChangeEvent } from "react";
 export const useGraphSizeSelection = () => {
 	const [value, setValue] = useAtom(graphSizeAtom);
 
-	const minGraphSize: number = 2;
+	const minGraphSize: number = 3;
 	const maxGraphSize: number = 50;
 
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
