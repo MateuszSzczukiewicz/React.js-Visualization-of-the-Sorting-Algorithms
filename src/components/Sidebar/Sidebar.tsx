@@ -9,7 +9,7 @@ export const Sidebar = () => {
 
 	return (
 		<>
-			<StyledToggleButton isOpen={isOpen} onClick={handleToggle}>
+			<StyledToggleButton isOpen={isOpen} onClick={handleToggle} aria-label="Settings">
 				<SettingsIcon />
 			</StyledToggleButton>
 			<StyledNav isOpen={isOpen}>

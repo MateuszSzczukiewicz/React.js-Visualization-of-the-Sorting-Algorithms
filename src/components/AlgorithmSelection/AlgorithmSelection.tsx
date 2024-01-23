@@ -12,6 +12,7 @@ export const AlgorithmSelection = () => {
 				<>
 					<input
 						type="radio"
+						role="radio"
 						id="quickSort"
 						name="algorithm"
 						checked={value === SelectedAlgorithmEnum.quickSort}
@@ -22,6 +23,7 @@ export const AlgorithmSelection = () => {
 				<>
 					<input
 						type="radio"
+						role="radio"
 						id="mergeSort"
 						name="algorithm"
 						checked={value === SelectedAlgorithmEnum.mergeSort}
