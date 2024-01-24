@@ -15,8 +15,8 @@ export const LegendWrapper = styled.aside`
 		width: 26rem;
 		height: 13rem;
 		border: 3px solid black;
-		right: 5rem;
-		top: 5rem;
+		right: 2rem;
+		top: 2rem;
 		transform: translateX(0%);
 	}
 `;

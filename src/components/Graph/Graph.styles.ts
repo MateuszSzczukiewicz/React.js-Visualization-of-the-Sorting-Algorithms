@@ -38,7 +38,7 @@ export const ButtonsWrapper = styled.article`
 	gap: 1rem;
 `;
 
-export const StyledButton = styled.button<{ isSorting: boolean }>`
+export const StyledButton = styled.button`
 	font-family: Lato, sans-serif;
 	display: inline-block;
 	padding: 10px 20px;
@@ -46,11 +46,10 @@ export const StyledButton = styled.button<{ isSorting: boolean }>`
 	font-weight: bold;
 	text-align: center;
 	text-decoration: none;
-	cursor: ${({ isSorting }) => (isSorting ? "" : "pointer")};
-	border: ${({ isSorting }) => (isSorting ? "2px solid #bbb" : "2px solid black")};
+	cursor: pointer;
+	border: 2px solid black;
 	border-radius: 5px;
-	color: ${({ isSorting }) => (isSorting ? "white" : "black")};
-	background-color: ${({ isSorting }) => (isSorting ? "#bbb" : "white")};
+	color: black;
 	transition:
 		background-color 0.3s,
 		color 0.3s,
@@ -62,7 +61,6 @@ export const StyledButton = styled.button<{ isSorting: boolean }>`
 
 	&:hover {
 		color: white;
-		background-color: ${({ isSorting }) => (isSorting ? "#bbb" : "#444")};
-		border: ${({ isSorting }) => (isSorting ? "2px solid #bbb" : "")};
+		background-color: #444;
 	}
 `;

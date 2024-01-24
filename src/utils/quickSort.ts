@@ -1,89 +1,53 @@
 import gsap from "gsap";
 import { RefObject } from "react";
-import { AnimationStepType } from "../types/animationStep.type.ts";
+import type { AnimationStepType } from "../types/animationStep.type.ts";
 import { AnimationStepEnum } from "../types/animationStep.enum.ts";
 
-const animateBars = async (
-	graphRef: RefObject<HTMLDivElement>,
-	animations: AnimationStepType[],
-) => {
+const animateBars = (graphRef: RefObject<HTMLDivElement>, animations: AnimationStepType[]) => {
 	const bars = graphRef.current?.getElementsByClassName("bar");
 	if (!bars) {
 		console.error("Bars element not found");
 		return;
 	}
 
-	for (let animationIndex = 0; animationIndex < animations.length; animationIndex++) {
-		const { index, newHeight, type } = animations[animationIndex];
+	const timeline = gsap.timeline();
 
+	animations.forEach(({ index, newHeight, type }) => {
 		switch (type) {
 			case AnimationStepEnum.comparison:
-				gsap.to(bars[index], {
+				timeline.to(bars[index], {
 					backgroundColor: "red",
-					duration: 0.2,
-					onComplete: () => {
-						requestAnimationFrame(() => {
-							gsap.to(bars[index], {
-								backgroundColor: "blue",
-								duration: 0.2,
-							});
-						});
-					},
 				});
 				break;
 
 			case AnimationStepEnum.heightChange:
-				gsap.to(bars[index], {
+				timeline.to(bars[index], {
 					height: `${newHeight! * 3}px`,
-					duration: 0.5,
+					backgroundColor: "blue",
 					ease: "power1.inOut",
-					onComplete: () => {
-						requestAnimationFrame(() => {
-							gsap.to(bars[index], {
-								backgroundColor: "blue",
-								duration: 0.2,
-							});
-						});
-					},
 				});
 				break;
 
 			case AnimationStepEnum.pivot:
-				gsap.to(bars[index], {
+				timeline.to(bars[index], {
 					backgroundColor: "green",
-					duration: 0.2,
-					onComplete: () => {
-						requestAnimationFrame(() => {
-							gsap.to(bars[index], {
-								backgroundColor: "blue",
-								duration: 0.2,
-							});
-						});
-					},
 				});
 				break;
 
 			case AnimationStepEnum.partition:
-				gsap.to(bars[index], {
+				timeline.to(bars[index], {
 					backgroundColor: "purple",
-					duration: 0.2,
-					onComplete: () => {
-						requestAnimationFrame(() => {
-							gsap.to(bars[index], {
-								backgroundColor: "blue",
-								duration: 0.2,
-							});
-						});
-					},
 				});
 				break;
 
 			default:
 				break;
 		}
+	});
 
-		await new Promise((resolve) => setTimeout(resolve, 200));
-	}
+	timeline.to(bars, {
+		backgroundColor: "blue",
+	});
 };
 
 const swap = async (
@@ -100,7 +64,7 @@ const swap = async (
 	animations.push({ index: i, newHeight: arr[i], type: AnimationStepEnum.heightChange });
 	animations.push({ index: j, newHeight: arr[j], type: AnimationStepEnum.heightChange });
 
-	await animateBars(graphRef, animations);
+	animateBars(graphRef, animations);
 };
 
 const partition = async (
@@ -111,7 +75,8 @@ const partition = async (
 	animations: AnimationStepType[],
 ): Promise<number> => {
 	const pivot = arr[high];
-	animations.push({ index: high, newHeight: pivot, type: AnimationStepEnum.pivot });
+	const pivotIndex = high;
+	animations.push({ index: pivotIndex, newHeight: pivot, type: AnimationStepEnum.pivot });
 
 	let i = low - 1;
 
@@ -124,7 +89,7 @@ const partition = async (
 		}
 	}
 
-	await swap(arr, i + 1, high, graphRef, animations);
+	await swap(arr, i + 1, pivotIndex, graphRef, animations);
 
 	for (let k = low; k <= high; k++) {
 		if (k < i + 1 || k > i + 1) {
