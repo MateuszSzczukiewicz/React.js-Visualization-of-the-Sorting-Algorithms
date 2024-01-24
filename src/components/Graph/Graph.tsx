@@ -14,7 +14,7 @@ import { algorithmMethodAtom } from "../../store/AlgorithmMethodAtom.ts";
 import { graphSizeAtom } from "../../store/GraphSizeAtom.ts";
 
 export const Graph = forwardRef(() => {
-	const { sortedArray, graphRef, isSorting, handleSort } = useGraphSorting();
+	const { sortedArray, graphRef, handleSort } = useGraphSorting();
 	const { handleGenerate } = useGenerateGraph();
 	const [method] = useAtom(algorithmMethodAtom);
 	const [size] = useAtom(graphSizeAtom);
@@ -37,20 +37,10 @@ export const Graph = forwardRef(() => {
 				))}
 			</StyledGraph>
 			<ButtonsWrapper>
-				<StyledButton
-					onClick={handleGenerate}
-					isSorting={isSorting}
-					disabled={isSorting}
-					aria-label="Generate New Array"
-				>
+				<StyledButton onClick={handleGenerate} aria-label="Generate New Array">
 					Generate New Array
 				</StyledButton>
-				<StyledButton
-					onClick={handleSort}
-					isSorting={isSorting}
-					disabled={isSorting}
-					aria-label="Sort"
-				>
+				<StyledButton onClick={handleSort} aria-label="Sort">
 					Sort
 				</StyledButton>
 			</ButtonsWrapper>
